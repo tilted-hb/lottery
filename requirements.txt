@@ -12,3 +12,4 @@ MarkupSafe
 cryptography
 bcrypt
 Flask-Talisman
+gunicorn
