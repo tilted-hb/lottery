@@ -31,44 +31,7 @@ app.config['RECAPTCHA_PRIVATE_KEY'] = os.getenv('RECAPTCHA_PRIVATE_KEY')
 
 # initialise database
 db = SQLAlchemy(app)
-# set the content security policy for the app
-csp = {
-    'default-src': [
-        '\'self\'',
-        'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css'
-    ],
-    'frame-src': [
-        '\'self\'',
-        'https://www.google.com',
-        'https://www.google.com/recaptcha',
-        'https://recaptcha.google.com/recaptcha/'
-    ],
-    'script-src': [
-        '\'self\'',
-        '\'unsafe-inline\'',
-        'https://www.google.com/recaptcha/',
-        'https://www.gstatic.com/recaptcha'
-    ],
-    'img-src': [
-        'data:'
-    ],
-    'style-src-elem': [
-        '\'self\'',
-        '\'unsafe-inline\'',
-        'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css',
-        'https://www.google.com/recaptcha/',
-        'https://www.gstatic.com/recaptcha'
-    ],
-    'script-src-elem': [
-        '\'self\'',
-        '\'unsafe-inline\'',
-        'https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha',
-        'https://www.google.com/recaptcha/',
-        'https://www.gstatic.com/recaptcha',
-        'https://www.gstatic.com/recaptcha/releases/cwQvQhsy4_nYdnSDY4u7O5_B/recaptcha__en_gb.js'
-    ]
-}
-talisman = Talisman(app, content_security_policy=csp)
+
 # configure the qrcode class
 qrcode = QRcode(app)
 
@@ -133,4 +96,4 @@ def load_user(id):
 
 if __name__ == "__main__":
     # run app with the self-signed certificates
-    app.run(ssl_context=('cert.pem', 'key.pem'))
+    app.run()
